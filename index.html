@@ -14,6 +14,7 @@
 
     <main class="flex-row justify-space-between">
         <div class="col-12 col-md-3">
+            <!--Search a city for forecast-->
             <div class="card">
                 <h3 class="card-header">Search for a City:</h3>
                 <form id="user-form" class="card-body">
@@ -21,9 +22,12 @@
                     <button type="submit" class="btn">Search</button>
                 </form>
             </div>
+
+            <!--Display list of searched terms-->
             <div class="card" id="searchHistory"></div>
         </div>
         <div class="col-12 col-md-9">
+            <!--Main weather forecast for the day-->
             <div class="list-group">
                 <h3 class="">City & Date</h3>
                 <p id="temperature">Temp</p>
@@ -31,37 +35,40 @@
                 <p id="humidity">Humidity:</p>
                 <p id="uvIndex">UV Index: </p>
             </div>
+
             <h2 class="forecast">5-Day Forecast:</h2>
+
+            <!--Create 5 day forecast blocks-->
             <div class="flex-row justify-space-between">
-                <div class="list-group">
+                <div class="list-group forecast-background">
                     <h4 id="foreOne">Date</h4>
                     <p id="iconOne"></p>
                     <p id="tempForeOne">Temp:</p>
                     <p id="windForeOne">Wind:</p>
                     <p id="humForeOne">Humidity:</p>
                 </div>
-                <div class="list-group">
+                <div class="list-group forecast-background">
                     <h4 id="foreTwo">Date</h4>
                     <p id="iconOne"></p>
                     <p id="tempforeTwo">Temp:</p>
                     <p id="windforeTwo">Wind:</p>
                     <p id="humforeTwo">Humidity:</p>
                 </div>
-                <div class="list-group">
+                <div class="list-group forecast-background">
                     <h4 id="foreThree">Date</h4>
                     <p id="iconOne"></p>
                     <p id="tempforeThree">Temp:</p>
                     <p id="windforeThree">Wind:</p>
                     <p id="humforeThree">Humidity:</p>
                 </div>
-                <div class="list-group">
+                <div class="list-group forecast-background">
                     <h4 id="foreFour">Date</h4>
                     <p id="iconOne"></p>
                     <p id="tempforeFour">Temp:</p>
                     <p id="windforeFour">Wind:</p>
                     <p id="humforeFour">Humidity:</p>
                 </div>
-                <div class="list-group">
+                <div class="list-group forecast-background">
                     <h4 id="foreFive">Date</h4>
                     <p id="iconOne"></p>
                     <p id="tempforeFive">Temp:</p>
@@ -71,6 +78,7 @@
             </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./assets/js/javascript.js"></script>
 </body>
 </html>
