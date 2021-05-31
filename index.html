@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body class="flex-column min-100-vh">
+    <header class="hero">
+        <h1 class="app-title">Weather Dashboard</h1>
+    </header>
+
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-3">
+            <div class="card">
+                <h3 class="card-header">Search for a City:</h3>
+                <form id="user-form" class="card-body">
+                    <input name="city" id="cityName" type="text" autofocus="true" placeholder="Enter a City Name" class="form-input" />
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+            <div class="card" id="searchHistory"></div>
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="list-group">
+                <h3 class="">City & Date</h3>
+                <p id="temperature">Temp</p>
+                <p id="windSpeed">Wind:</p>
+                <p id="humidity">Humidity:</p>
+                <p id="uvIndex">UV Index: </p>
+            </div>
+            <h2 class="forecast">5-Day Forecast:</h2>
+            <div class="flex-row justify-space-between">
+                <div class="list-group">
+                    <h4 id="foreOne">Date</h4>
+                    <p id="iconOne"></p>
+                    <p id="tempForeOne">Temp:</p>
+                    <p id="windForeOne">Wind:</p>
+                    <p id="humForeOne">Humidity:</p>
+                </div>
+                <div class="list-group">
+                    <h4 id="foreTwo">Date</h4>
+                    <p id="iconOne"></p>
+                    <p id="tempforeTwo">Temp:</p>
+                    <p id="windforeTwo">Wind:</p>
+                    <p id="humforeTwo">Humidity:</p>
+                </div>
+                <div class="list-group">
+                    <h4 id="foreThree">Date</h4>
+                    <p id="iconOne"></p>
+                    <p id="tempforeThree">Temp:</p>
+                    <p id="windforeThree">Wind:</p>
+                    <p id="humforeThree">Humidity:</p>
+                </div>
+                <div class="list-group">
+                    <h4 id="foreFour">Date</h4>
+                    <p id="iconOne"></p>
+                    <p id="tempforeFour">Temp:</p>
+                    <p id="windforeFour">Wind:</p>
+                    <p id="humforeFour">Humidity:</p>
+                </div>
+                <div class="list-group">
+                    <h4 id="foreFive">Date</h4>
+                    <p id="iconOne"></p>
+                    <p id="tempforeFive">Temp:</p>
+                    <p id="windforeFive">Wind:</p>
+                    <p id="humforeFive">Humidity:</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/javascript.js"></script>
+</body>
+</html>
