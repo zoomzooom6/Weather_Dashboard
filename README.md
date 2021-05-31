@@ -1,7 +1,7 @@
 # Weather Dashboard
 The purpose of this challenge is to create a webpage that allows a user to enter a location and receive weather information from a server for a certain time period (next 24-72 hours etc).
 
-## Website
+### Website
 https://zoomzooom6.github.io/Weather_Dashboard/
 
 ### Criteria
