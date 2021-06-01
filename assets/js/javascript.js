@@ -84,7 +84,7 @@ var weatherDisp = function(info) {
     //set Temperature, Wind, Humidity, and UV for chosen city
     cityTemp.textContent = "Temp: " + info.current.temp + "°C";
     cityWind.textContent = "Wind: " + info.current.wind_speed + " km/h";
-    cityHumidity.textContent = "Humidity: " + info.current.humidity + " %";
+    cityHumidity.textContent = "Humidity: " + info.current.humidity + "%";
     var uvRating = document.createElement('p');
     //uvRating.classList = "rating";
     uvRating.innerHTML = info.current.uvi;
@@ -115,17 +115,29 @@ var setDate = function() {
 
 //function to show 5 day temperature forecast and icons
 var setFutureTemp = function(temp) {
-
+    oneTemp.textContent = "Temp: " + temp.daily[0].temp.day + "°C";
+    twoTemp.textContent = "Temp: " + temp.daily[1].temp.day + "°C";
+    threeTemp.textContent = "Temp: " + temp.daily[2].temp.day + "°C";
+    fourTemp.textContent = "Temp: " + temp.daily[3].temp.day + "°C";
+    fiveTemp.textContent = "Temp: " + temp.daily[4].temp.day + "°C";
 }
 
 //function to show 5 day wind forecast
 var setFutureWind = function(wind) {
-
+    oneWind.textContent = "Wind: " + wind.daily[0].wind_speed + " km/h";
+    twoWind.textContent = "Wind: " + wind.daily[1].wind_speed + " km/h";
+    threeWind.textContent = "Wind: " + wind.daily[2].wind_speed + " km/h";
+    fourWind.textContent = "Wind: " + wind.daily[3].wind_speed + " km/h";
+    fiveWind.textContent = "Wind: " + wind.daily[4].wind_speed + " km/h";
 }
 
 //function to show 5 day humidity forecast
 var setFutureHumidity = function(humidity) {
-
+    oneHum.textContent = "Humidity: " + humidity.daily[0].humidity + "%";
+    twoHum.textContent = "Humidity: " + humidity.daily[1].humidity + "%";
+    threeHum.textContent = "Humidity: " + humidity.daily[2].humidity + "%";
+    fourHum.textContent = "Humidity: " + humidity.daily[3].humidity + "%";
+    fiveHum.textContent = "Humidity: " + humidity.daily[4].humidity + "%";
 }
 
 forecastCall("Toronto");
