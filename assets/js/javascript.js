@@ -1,3 +1,7 @@
+var userFormE1 = document.getElementById("user-form");
+var citySearch = document.getElementById("cityName");
+
+//create variables for today's elements
 var cityLocation = document.getElementById('city');
 var cityTemp = document.getElementById('temperature');
 var cityWind = document.getElementById('windSpeed');
@@ -30,6 +34,16 @@ var fiveTemp = document.getElementById('tempForeFive');
 var fiveWind = document.getElementById('windForeFive');
 var fiveHum = document.getElementById('humForeFive');
 
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+
+    var searchCity = citySearch.value;
+
+    if (searchCity) {
+        forecastCall(searchCity);
+    } 
+};
+
 var currentCity = function(location) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=9f2a573047350fc85e320b551e5f6ee3&units=metric"
 
@@ -39,13 +53,15 @@ var currentCity = function(location) {
             response.json().then(function (data) {
                 var lat = data.coord.lat;
                 var lon = data.coord.lon;
-                currentTemp(lat, lon);
+                currentTemp(lat, lon, data.name);
             })
+        } else {
+            alert("Unable to find city, please check your spelling.");
         }
     });
-}
+};
 
-var currentTemp = function(lat, lon) {
+var currentTemp = function(lat, lon, city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=9f2a573047350fc85e320b551e5f6ee3&units=metric"
 
     fetch(apiUrl)
@@ -53,26 +69,26 @@ var currentTemp = function(lat, lon) {
         if(response.ok) {
             response.json().then(function (data) {
                 console.log(data);
-                weatherDisp(data);
+                weatherDisp(data, city);
             })
         }
     });
-}
+};
 
 var fiveDayforecast = function(location) {
     setDate();
     setFutureTemp(location);
     setFutureWind(location);
     setFutureHumidity(location);
-}
+};
 
 var forecastCall = function(location) {
     currentCity(location);
-}
+};
 
-var weatherDisp = function(info) {
+var weatherDisp = function(info, city) {
     var date = moment().format("M/D/YYYY")
-    var cityName = info.timezone.split("/")[1];
+    var cityName = city;
     var iconE1 = document.createElement('img');
     iconE1.classList = "icon";
     
@@ -102,7 +118,7 @@ var weatherDisp = function(info) {
 
     //get 5 day forecast
     fiveDayforecast(info);
-}
+};
 
 //function to label next 5 days
 var setDate = function() {
@@ -111,7 +127,7 @@ var setDate = function() {
     threeDate.textContent = moment().add(3, 'd').format("M/D/YYYY");
     fourDate.textContent = moment().add(4, 'd').format("M/D/YYYY");
     fiveDate.textContent = moment().add(5, 'd').format("M/D/YYYY");
-}
+};
 
 //function to show 5 day temperature forecast and icons
 var setFutureTemp = function(temp) {
@@ -146,7 +162,7 @@ var setFutureTemp = function(temp) {
     iconE5.classList = "icon";
     iconE5.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[4].weather[0].icon + ".png");
     fiveDate.appendChild(iconE5);
-}
+};
 
 //function to show 5 day wind forecast
 var setFutureWind = function(wind) {
@@ -155,7 +171,7 @@ var setFutureWind = function(wind) {
     threeWind.textContent = "Wind: " + wind.daily[2].wind_speed + " km/h";
     fourWind.textContent = "Wind: " + wind.daily[3].wind_speed + " km/h";
     fiveWind.textContent = "Wind: " + wind.daily[4].wind_speed + " km/h";
-}
+};
 
 //function to show 5 day humidity forecast
 var setFutureHumidity = function(humidity) {
@@ -164,6 +180,7 @@ var setFutureHumidity = function(humidity) {
     threeHum.textContent = "Humidity: " + humidity.daily[2].humidity + "%";
     fourHum.textContent = "Humidity: " + humidity.daily[3].humidity + "%";
     fiveHum.textContent = "Humidity: " + humidity.daily[4].humidity + "%";
-}
+};
 
-forecastCall("Toronto");
+userFormE1.addEventListener("submit", formSubmitHandler);
+//forecastCall("Toronto");
