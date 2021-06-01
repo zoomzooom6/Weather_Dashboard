@@ -41,7 +41,7 @@ var formSubmitHandler = function (event) {
 
     var searchCity = citySearch.value;
     if (searchCity) {
-        currentCity(searchCity, 0);
+        currentCity(searchCity, state);
         citySearch.value = "";
     }
 };
@@ -226,6 +226,7 @@ var loadSearches = function() {
 
 var clearLocal = function() {
     localStorage.clear();
+    alert("Please refresh the page to clear search items");
 }
 
 userFormE1.addEventListener("submit", formSubmitHandler);
