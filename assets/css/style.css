@@ -96,6 +96,14 @@ p {
     margin-bottom: 30px;
 }
 
+.list-group h1 {
+    color: var(--dark);
+}
+
+.img {
+    vertical-align: middle;
+}
+
 .forecast-background {
     color: var(--light);
     background-color: var(--tertiary);
