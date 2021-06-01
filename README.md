@@ -35,6 +35,7 @@ https://zoomzooom6.github.io/Weather_Dashboard/
 * Javascript
 * localStorage
 * OpenWeather One Call API
+* Moment.js
 
 ## Contributions
 Designed by Tony Huang
@@ -42,11 +43,11 @@ Designed by Tony Huang
 ## Final Result
 
 ### Main Landing Page
-<img src="" alt="Main landing page" />
+<img src="./assets/images/MainPage.jpg" alt="Main landing page" />
 
 ### Weather forecast of Toronto
-<img src="" alt="Toronto weather forecast" />
+<img src="./assets/images/TorontoForeCast.jpg" alt="Toronto weather forecast" />
 
 ### Console Log of Weather API call
-<img src="" alt="Sample server return from OpenWeather API" />
+<img src="./assets/images/OpenWeatherCall.jpg" alt="Sample server return from OpenWeather API" />
 
