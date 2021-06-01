@@ -160,6 +160,10 @@ p {
     border-top: 2px solid var(--light-dark);
 }
 
+.card-history p {
+    text-align: center;
+}
+
 .card-body {
     padding: 2.5%;
 }
