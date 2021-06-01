@@ -129,7 +129,7 @@ p {
     background-color: var(--tertiary);
 }
 
-.forecast-background h4 {
+.forecast-background h2 {
     color: var(--light);
 }
 

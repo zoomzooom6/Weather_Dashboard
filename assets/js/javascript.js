@@ -4,6 +4,32 @@ var cityWind = document.getElementById('windSpeed');
 var cityHumidity = document.getElementById('humidity');
 var cityUV = document.getElementById('uvIndex');
 
+//create variables for each subsequent day
+var oneDate = document.getElementById('foreOne');
+var oneTemp = document.getElementById('tempForeOne');
+var oneWind = document.getElementById('windForeOne');
+var oneHum = document.getElementById('humForeOne');
+
+var twoDate = document.getElementById('foreTwo');
+var twoTemp = document.getElementById('tempForeTwo');
+var twoWind = document.getElementById('windForeTwo');
+var twoHum = document.getElementById('humForeTwo');
+
+var threeDate = document.getElementById('foreThree');
+var threeTemp = document.getElementById('tempForeThree');
+var threeWind = document.getElementById('windForeThree');
+var threeHum = document.getElementById('humForeThree');
+
+var fourDate = document.getElementById('foreFour');
+var fourTemp = document.getElementById('tempForeFour');
+var fourWind = document.getElementById('windForeFour');
+var fourHum = document.getElementById('humForeFour');
+
+var fiveDate = document.getElementById('foreFive');
+var fiveTemp = document.getElementById('tempForeFive');
+var fiveWind = document.getElementById('windForeFive');
+var fiveHum = document.getElementById('humForeFive');
+
 var currentCity = function(location) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=9f2a573047350fc85e320b551e5f6ee3&units=metric"
 
@@ -11,9 +37,6 @@ var currentCity = function(location) {
     .then(function(response) {
         if(response.ok) {
             response.json().then(function (data) {
-                //console.log(data);
-                //console.log(data.name);
-                //console.log(data.main.temp);
                 var lat = data.coord.lat;
                 var lon = data.coord.lon;
                 currentTemp(lat, lon);
@@ -37,21 +60,14 @@ var currentTemp = function(lat, lon) {
 }
 
 var fiveDayforecast = function(location) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + location + "&cnt=5&appid=89db6ee33f965f17179f43e66f935569&units=metric"
-
-    fetch(apiUrl)
-    .then(function(response) {
-        if(response.ok) {
-            response.json().then(function (data) {
-                console.log(data);
-            })
-        }
-    });
+    setDate();
+    setFutureTemp(location);
+    setFutureWind(location);
+    setFutureHumidity(location);
 }
 
 var forecastCall = function(location) {
     currentCity(location);
-    //fiveDayforecast(location);
 }
 
 var weatherDisp = function(info) {
@@ -83,6 +99,33 @@ var weatherDisp = function(info) {
     }
     cityUV.textContent = "UV Index: ";
     cityUV.appendChild(uvRating);
+
+    //get 5 day forecast
+    fiveDayforecast(info);
+}
+
+//function to label next 5 days
+var setDate = function() {
+    oneDate.textContent = moment().add(1, 'd').format("M/D/YYYY");
+    twoDate.textContent = moment().add(2, 'd').format("M/D/YYYY");
+    threeDate.textContent = moment().add(3, 'd').format("M/D/YYYY");
+    fourDate.textContent = moment().add(4, 'd').format("M/D/YYYY");
+    fiveDate.textContent = moment().add(5, 'd').format("M/D/YYYY");
+}
+
+//function to show 5 day temperature forecast and icons
+var setFutureTemp = function(temp) {
+
+}
+
+//function to show 5 day wind forecast
+var setFutureWind = function(wind) {
+
+}
+
+//function to show 5 day humidity forecast
+var setFutureHumidity = function(humidity) {
+
 }
 
 forecastCall("Toronto");
