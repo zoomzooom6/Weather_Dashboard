@@ -57,20 +57,30 @@ var forecastCall = function(location) {
 var weatherDisp = function(info) {
     var date = moment().format("M/D/YYYY")
     var cityName = info.timezone.split("/")[1];
-    var iconE1 = document.createElement("img");
+    var iconE1 = document.createElement('img');
+    iconE1.classList = "icon";
     
     //get current weather icon from API response
     iconE1.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + info.current.weather[0].icon + ".png");
     cityLocation.textContent = cityName + " (" + date + ") ";
     cityLocation.appendChild(iconE1);
     
-    //set Temperature, Wind, and Humidity for chosen city
+    //set Temperature, Wind, Humidity, and UV for chosen city
     cityTemp.textContent = "Temp: " + info.current.temp + "°C";
     cityWind.textContent = "Wind: " + info.current.wind_speed + " km/h";
     cityHumidity.textContent = "Humidity: " + info.current.humidity + " %";
+    var uvRating = document.createElement('p');
+    //uvRating.classList = "rating";
+    uvRating.innerHTML = info.current.uvi;
 
     //change UV rating background based on value
-    var uvRating = info.current.uvi;
+    if(info.current.uvi < 2) {
+        uvRating.classList = "rating uvLow";
+    } else if (info.current.uvi < 5) {
+        uvRating.classList = "rating uvMod";
+    } else {
+        uvRating.classList = "rating uvHigh";
+    }
     cityUV.textContent = "UV Index: ";
     cityUV.appendChild(uvRating);
 }
