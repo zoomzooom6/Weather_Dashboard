@@ -51,6 +51,9 @@ Designed by Tony Huang
 ### Page view on mobile
 <img src="./assets/images/MobileView.jpg" alt="Page view on mobile devices" />
 
+### Local storage items
+<img src="./assets/images/LocalStorage.jpg" alt="Search terms stored in local storage" />
+
 ### Console Log of Weather API call
 <img src="./assets/images/OpenWeatherCall.jpg" alt="Sample server return from OpenWeather API" />
 

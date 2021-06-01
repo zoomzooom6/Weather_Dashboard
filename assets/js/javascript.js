@@ -40,7 +40,6 @@ var formSubmitHandler = function (event) {
     event.preventDefault();
 
     var searchCity = citySearch.value;
-
     if (searchCity) {
         currentCity(searchCity, 0);
         citySearch.value = "";
@@ -54,7 +53,7 @@ var historySearch = function (event) {
 
 var searchHistory = function (city) {
     var buttonE1 = document.createElement('p');
-    buttonE1.classList = "btn padded";
+    buttonE1.classList = 'btn padded';
     buttonE1.textContent = city;
     buttonE1.setAttribute('id', city);
     searchHist.appendChild(buttonE1);
