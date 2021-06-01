@@ -120,6 +120,32 @@ var setFutureTemp = function(temp) {
     threeTemp.textContent = "Temp: " + temp.daily[2].temp.day + "°C";
     fourTemp.textContent = "Temp: " + temp.daily[3].temp.day + "°C";
     fiveTemp.textContent = "Temp: " + temp.daily[4].temp.day + "°C";
+
+    //get icon for each day's forecast
+    var iconE1 = document.createElement('img');
+    iconE1.classList = "icon";
+    iconE1.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[0].weather[0].icon + ".png");
+    oneDate.appendChild(iconE1);
+
+    var iconE2 = document.createElement('img');
+    iconE2.classList = "icon";
+    iconE2.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[1].weather[0].icon + ".png");
+    twoDate.appendChild(iconE2);
+    
+    var iconE3 = document.createElement('img');
+    iconE3.classList = "icon";
+    iconE3.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[2].weather[0].icon + ".png");
+    threeDate.appendChild(iconE3);
+    
+    var iconE4 = document.createElement('img');
+    iconE4.classList = "icon";
+    iconE4.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[3].weather[0].icon + ".png");
+    fourDate.appendChild(iconE4);
+    
+    var iconE5 = document.createElement('img');
+    iconE5.classList = "icon";
+    iconE5.setAttribute("src", weatherIcon = "http://openweathermap.org/img/wn/" + temp.daily[4].weather[0].icon + ".png");
+    fiveDate.appendChild(iconE5);
 }
 
 //function to show 5 day wind forecast
