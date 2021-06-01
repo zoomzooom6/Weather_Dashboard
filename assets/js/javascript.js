@@ -46,10 +46,20 @@ var formSubmitHandler = function(event) {
     } 
 };
 
+var historySearch = function(event) {
+    event.preventDefault();
+
+    var clickedBtn = $(".btn").attr("id");
+    console.log(clickedBtn);
+    
+}
+
 var searchHistory = function(city) {
     var buttonE1 = document.createElement('button');
     buttonE1.classList = "btn padded";
     buttonE1.textContent = city;
+    buttonE1.setAttribute('type', 'submit');
+    buttonE1.setAttribute('id', city);
     searchHist.appendChild(buttonE1);
 };
 
@@ -104,7 +114,7 @@ var weatherDisp = function(info, city) {
     cityLocation.appendChild(iconE1);
     
     //set Temperature, Wind, Humidity, and UV for chosen city
-    cityTemp.textContent = "Temp: " + info.current.temp + "°C";
+    cityTemp.textContent = "Temp: " + info.current.temp + "°C" + " (Feels like: " + info.current.feels_like + "°C)";
     cityWind.textContent = "Wind: " + info.current.wind_speed + " km/h";
     cityHumidity.textContent = "Humidity: " + info.current.humidity + "%";
     var uvRating = document.createElement('p');
@@ -116,8 +126,10 @@ var weatherDisp = function(info, city) {
         uvRating.classList = "rating uvLow";
     } else if (info.current.uvi < 5) {
         uvRating.classList = "rating uvMod";
-    } else {
+    } else if (info.current.uvi < 7 ) {
         uvRating.classList = "rating uvHigh";
+    } else {
+        uvRating.classList = "rating uvDanger";
     }
     cityUV.textContent = "UV Index: ";
     cityUV.appendChild(uvRating);
@@ -189,4 +201,6 @@ var setFutureHumidity = function(humidity) {
 };
 
 userFormE1.addEventListener("submit", formSubmitHandler);
+searchHist.addEventListener("submit", historySearch);
+
 //forecastCall("Toronto");

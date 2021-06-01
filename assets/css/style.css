@@ -116,6 +116,10 @@ p {
     border-radius: 12px;
 }
 
+.uvDanger {
+    background-color: #750308;
+}
+
 .uvHigh {
     background-color: #cf0d0d;
 }
