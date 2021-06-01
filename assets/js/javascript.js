@@ -1,5 +1,6 @@
-var userFormE1 = document.getElementById("user-form");
-var citySearch = document.getElementById("cityName");
+var userFormE1 = document.getElementById('user-form');
+var citySearch = document.getElementById('cityName');
+var searchHist = document.getElementById('searchHistory');
 
 //create variables for today's elements
 var cityLocation = document.getElementById('city');
@@ -40,8 +41,16 @@ var formSubmitHandler = function(event) {
     var searchCity = citySearch.value;
 
     if (searchCity) {
-        forecastCall(searchCity);
+        currentCity(searchCity);
+        citySearch.value = "";
     } 
+};
+
+var searchHistory = function(city) {
+    var buttonE1 = document.createElement('button');
+    buttonE1.classList = "btn padded";
+    buttonE1.textContent = city;
+    searchHist.appendChild(buttonE1);
 };
 
 var currentCity = function(location) {
@@ -54,6 +63,7 @@ var currentCity = function(location) {
                 var lat = data.coord.lat;
                 var lon = data.coord.lon;
                 currentTemp(lat, lon, data.name);
+                searchHistory(location);
             })
         } else {
             alert("Unable to find city, please check your spelling.");
@@ -80,10 +90,6 @@ var fiveDayforecast = function(location) {
     setFutureTemp(location);
     setFutureWind(location);
     setFutureHumidity(location);
-};
-
-var forecastCall = function(location) {
-    currentCity(location);
 };
 
 var weatherDisp = function(info, city) {
