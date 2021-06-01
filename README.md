@@ -33,6 +33,7 @@ https://zoomzooom6.github.io/Weather_Dashboard/
 * HTML
 * CSS
 * Javascript
+* localStorage
 * OpenWeather One Call API
 * Moment.js
 

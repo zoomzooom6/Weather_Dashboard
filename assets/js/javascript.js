@@ -1,6 +1,7 @@
 var userFormE1 = document.getElementById('user-form');
 var citySearch = document.getElementById('cityName');
 var searchHist = document.getElementById('searchHistory');
+var stored = [];
 
 //create variables for today's elements
 var cityLocation = document.getElementById('city');
@@ -55,9 +56,10 @@ var searchHistory = function (city) {
     var buttonE1 = document.createElement('p');
     buttonE1.classList = "btn padded";
     buttonE1.textContent = city;
-    //buttonE1.setAttribute('type', 'submit');
     buttonE1.setAttribute('id', city);
     searchHist.appendChild(buttonE1);
+    stored.push(city);
+    saveSearches();
 };
 
 var currentCity = function (location, add) {
@@ -205,7 +207,29 @@ var setFutureHumidity = function (humidity) {
     fiveHum.textContent = "Humidity: " + humidity.daily[4].humidity + "%";
 };
 
-userFormE1.addEventListener("submit", formSubmitHandler);
-searchHist.addEventListener("click", historySearch);
+var saveSearches = function() {
+    localStorage.setItem("searches", JSON.stringify(stored));
+}
 
-//forecastCall("Toronto");
+var loadSearches = function() {
+    var savedSearched = localStorage.getItem("searches");
+
+    if (savedSearched === null) {
+        return false;
+    }
+
+    savedSearched = JSON.parse(savedSearched);
+
+    for (var i = 0; i < savedSearched.length; i++) {
+        searchHistory(savedSearched[i]);
+    }
+};
+
+var clearLocal = function() {
+    localStorage.clear();
+}
+
+userFormE1.addEventListener("submit", formSubmitHandler);
+userFormE1.addEventListener("click", clearLocal);
+searchHist.addEventListener("click", historySearch);
+loadSearches();
