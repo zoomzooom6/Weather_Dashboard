@@ -36,6 +36,8 @@ var fiveTemp = document.getElementById('tempForeFive');
 var fiveWind = document.getElementById('windForeFive');
 var fiveHum = document.getElementById('humForeFive');
 
+var state = 0;
+
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
@@ -230,6 +232,6 @@ var clearLocal = function() {
 }
 
 userFormE1.addEventListener("submit", formSubmitHandler);
-userFormE1.addEventListener("click", clearLocal);
+//userFormE1.addEventListener("click", clearLocal);
 searchHist.addEventListener("click", historySearch);
 loadSearches();
